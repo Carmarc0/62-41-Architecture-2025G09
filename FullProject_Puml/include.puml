@@ -1,0 +1,33 @@
+@startuml PrintSystemArchitecture
+ 
+title HES-SO Print Payment System - Complete Architecture
+ 
+' === DAL LAYER ===
+!include .\\DAL\PrintSystemContext.puml
+!include .\\DAL\Models\User.puml
+!include .\\DAL\Models\UserQuota.puml
+!include .\\DAL\ExternalSystems\ActiveDirectory.puml
+!include .\\DAL\ExternalSystems\PrintSystemAPI.puml
+!include .\\DAL\Utilities\CurrencyConverter.puml
+ 
+' === WEBAPI LAYER ===
+!include .\\WebAPI\Controllers\AuthenticationController.puml
+!include .\\WebAPI\Controllers\QuotaController.puml
+!include .\\WebAPI\Controllers\UsersController.puml
+!include .\\WebAPI\Interfaces\IAuthenticationService.puml
+!include .\\WebAPI\Interfaces\IQuotaService.puml
+!include .\\WebAPI\Interfaces\IUserRepository.puml
+!include .\\WebAPI\Services\AuthenticationService.puml
+!include .\\WebAPI\Services\QuotaService.puml
+!include .\\WebAPI\Repositories\UserRepository.puml
+ 
+' === MVC LAYER ===
+!include .\\MVC\Controllers\FacultiesController.puml
+!include .\\MVC\Controllers\HomeController.puml
+!include .\\MVC\Controllers\PoSController.puml
+!include .\\MVC\Models\ErrorViewModel.puml
+!include .\\MVC\Models\LoginViewModel.puml
+!include .\\MVC\Models\QuotaViewModel.puml
+!include .\\MVC\Services\ApiService.puml
+ 
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class "Task`1"<T> {
+}
+class "Deserialize`1"<T> {
+}
+@enduml
