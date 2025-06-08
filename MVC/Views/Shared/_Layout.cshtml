@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HES-SO Print System</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        :root {
+            --heso-blue: #0088CC;
+            --heso-dark-blue: #006699;
+            --heso-gray: #999999;
+            --heso-light-gray: #F5F5F5;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--heso-light-gray);
+        }
+
+        .navbar-heso {
+            background-color: var(--heso-blue);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+            .navbar-brand img {
+                height: 40px;
+                margin-right: 10px;
+            }
+
+        .btn-heso-primary {
+            background-color: var(--heso-blue);
+            border-color: var(--heso-blue);
+            color: white;
+        }
+
+            .btn-heso-primary:hover {
+                background-color: var(--heso-dark-blue);
+                border-color: var(--heso-dark-blue);
+            }
+
+        .card-heso {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .card-header-heso {
+            background-color: var(--heso-blue);
+            color: white;
+            font-weight: bold;
+            border-radius: 8px 8px 0 0 !important;
+        }
+
+        .text-heso-blue {
+            color: var(--heso-blue) !important;
+        }
+
+        .alert-heso-success {
+            background-color: #d4edda;
+            border-color: var(--heso-blue);
+            color: #155724;
+        }
+
+        .alert-heso-error {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .container-main {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-heso {
+            background-color: var(--heso-gray);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--heso-dark-blue);
+        }
+
+        .form-control:focus {
+            border-color: var(--heso-blue);
+            box-shadow: 0 0 0 0.2rem rgba(0, 136, 204, 0.25);
+        }
+
+        .balance-display {
+            background: linear-gradient(135deg, var(--heso-blue), var(--heso-dark-blue));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .balance-amount {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) td {
+            background-color: rgba(0, 136, 204, 0.05);
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-heso">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="~/images/logo.png" alt="HES-SO Valais Logo" />
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="container container-main flex-grow-1">
+        @RenderBody()
+    </main>
+
+    <footer class="footer-heso">
+        <div class="container">
+            &copy; 2025 - HES-SO Valais/Wallis - Print Payment System
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

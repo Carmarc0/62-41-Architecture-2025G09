@@ -1,0 +1,159 @@
+﻿@model MVC.Models.AddCreditViewModel
+@{
+    ViewData["Title"] = "My Print Account";
+}
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+
+        <!-- User information header -->
+        <div class="card card-heso mb-4">
+            <div class="card-header card-header-heso">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">
+                        <i class="fas fa-user-circle"></i> Welcome, @Model.Username
+                    </h4>
+                    <div class="text-end">
+                        <a href="@Url.Action("RefreshBalance")" class="text-white text-decoration-none me-3">
+                            <small><i class="fas fa-sync-alt"></i> Refresh</small>
+                        </a>
+                        <a href="@Url.Action("Logout")" class="text-white text-decoration-none">
+                            <small><i class="fas fa-sign-out-alt"></i> Logout</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Balance display -->
+            <div class="card-body p-0">
+                <div class="balance-display">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5><i class="fas fa-wallet"></i> Current Balance</h5>
+                            <div class="balance-amount">@Model.CurrentBalance.ToString("F2") CHF</div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5><i class="fas fa-file-alt"></i> Available Pages</h5>
+                            <div class="balance-amount">@((int)(Model.CurrentBalance / 0.08)) pages</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fixed height container for messages to prevent layout shift -->
+        <div style="min-height: 70px;">
+            @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+            {
+                <div class="alert alert-heso-success">
+                    <i class="fas fa-check-circle"></i> @Model.SuccessMessage
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="alert alert-heso-error">
+                    <i class="fas fa-exclamation-triangle"></i> @Model.ErrorMessage
+                </div>
+            }
+        </div>
+
+        <!-- Add credit form -->
+        <div class="card card-heso">
+            <div class="card-header card-header-heso">
+                <h5 class="mb-0">
+                    <i class="fas fa-plus-circle"></i> Add Credit
+                </h5>
+            </div>
+            <div class="card-body p-4">
+
+                <form asp-action="AddCredit" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="Amount" class="form-label">
+                                    <i class="fas fa-coins"></i> @Html.DisplayNameFor(m => m.Amount) *
+                                </label>
+                                <div class="input-group">
+                                    <input asp-for="Amount" type="number" min="1" max="500" step="1"
+                                           class="form-control form-control-lg"
+                                           placeholder="10" style="font-size: 1.2rem; height: 50px;" />
+                                    <span class="input-group-text" style="font-size: 1.1rem;">CHF</span>
+                                </div>
+                                <div style="min-height: 20px;">
+                                    <span asp-validation-for="Amount" class="text-danger small"></span>
+                                </div>
+                                <small class="text-muted">Whole numbers only (no decimals)</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    <i class="fas fa-calculator"></i> Equivalent Pages
+                                </label>
+                                <div class="form-control form-control-lg bg-light d-flex align-items-center justify-content-center"
+                                     id="pages-equivalent" style="height: 50px; font-size: 1.2rem; font-weight: bold;">
+                                    0 pages
+                                </div>
+                                <div style="min-height: 20px;">
+                                    <small class="form-text text-muted">
+                                        Automatic calculation
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Predefined amounts -->
+                    <div class="mb-4">
+                        <label class="form-label">
+                            <i class="fas fa-mouse-pointer"></i> Quick Amounts
+                        </label>
+                        <div class="btn-group d-flex" role="group">
+                            <button type="button" class="btn btn-outline-primary quick-amount" data-amount="1">1 CHF</button>
+                            <button type="button" class="btn btn-outline-primary quick-amount" data-amount="5">5 CHF</button>
+                            <button type="button" class="btn btn-outline-primary quick-amount" data-amount="10">10 CHF</button>
+                            <button type="button" class="btn btn-outline-primary quick-amount" data-amount="20">20 CHF</button>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-heso-primary btn-lg">
+                            <i class="fas fa-credit-card"></i> Add Credit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        // Automatic pages equivalent calculation - integers only
+        function updatePagesEquivalent() {
+            const amount = parseInt(document.getElementById('Amount').value) || 0;
+            const pages = Math.floor(amount / 0.08);
+            document.getElementById('pages-equivalent').textContent = pages + ' pages';
+        }
+
+        // Predefined amounts
+        document.querySelectorAll('.quick-amount').forEach(button => {
+            button.addEventListener('click', function() {
+                const amount = this.getAttribute('data-amount');
+                document.getElementById('Amount').value = amount;
+                updatePagesEquivalent();
+
+                // Highlight selected button
+                document.querySelectorAll('.quick-amount').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.getElementById('Amount').addEventListener('input', updatePagesEquivalent);
+        document.addEventListener('DOMContentLoaded', updatePagesEquivalent);
+    </script>
+}

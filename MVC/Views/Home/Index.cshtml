@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4 text-heso-blue mb-4">
+        <i class="fas fa-print"></i> HES-SO Valais Print System
+    </h1>
+    <p class="lead mb-5">Choose your access interface</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-5 mb-4">
+        <div class="card card-heso h-100">
+            <div class="card-header card-header-heso text-center">
+                <h4 class="mb-0">
+                    <i class="fas fa-user-graduate"></i> Students & Staff
+                </h4>
+            </div>
+            <div class="card-body text-center d-flex flex-column">
+                <p class="flex-grow-1 mb-3">
+                    Interface to check your print balance and add credit to your account.
+                </p>
+
+                <div class="mb-4">
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <div class="p-2 bg-light rounded">
+                                <i class="fas fa-check text-success"></i>
+                                <small class="d-block mt-1"><strong>Check Balance</strong></small>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="p-2 bg-light rounded">
+                                <i class="fas fa-credit-card text-success"></i>
+                                <small class="d-block mt-1"><strong>Add Credit</strong></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="@Url.Action("Index", "PoS")" class="btn btn-heso-primary btn-lg">
+                    <i class="fas fa-sign-in-alt"></i> Access Student Interface
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-5 mb-4">
+        <div class="card card-heso h-100">
+            <div class="card-header card-header-heso text-center">
+                <h4 class="mb-0">
+                    <i class="fas fa-user-shield"></i> Faculty Administration
+                </h4>
+            </div>
+            <div class="card-body text-center d-flex flex-column">
+                <p class="flex-grow-1 mb-3">
+                    Administrative interface for managing student print quotas.
+                </p>
+
+                <div class="mb-4">
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <div class="p-2 bg-light rounded">
+                                <i class="fas fa-plus-circle text-success"></i>
+                                <small class="d-block mt-1"><strong>Add Quota</strong></small>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="p-2 bg-light rounded">
+                                <i class="fas fa-search text-success"></i>
+                                <small class="d-block mt-1"><strong>Check Balances</strong></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="@Url.Action("Index", "Faculties")" class="btn btn-heso-primary btn-lg">
+                    <i class="fas fa-cog"></i> Access Administration
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

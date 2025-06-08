@@ -1,0 +1,86 @@
+﻿@model MVC.Models.ViewBalanceViewModel
+@{
+    ViewData["Title"] = "View Balance";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card card-heso">
+            <div class="card-header card-header-heso text-center">
+                <h4 class="mb-0">
+                    <i class="fas fa-search"></i> Check Balance
+                </h4>
+            </div>
+            <div class="card-body p-4">
+                <p class="text-center text-muted mb-4">
+                    Enter username or UID to check print balance
+                </p>
+
+                <!-- Message display -->
+                @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+                {
+                    <div class="alert alert-heso-success">
+                        <i class="fas fa-check-circle"></i> @Model.SuccessMessage
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                {
+                    <div class="alert alert-heso-error">
+                        <i class="fas fa-exclamation-triangle"></i> @Model.ErrorMessage
+                    </div>
+                }
+
+                <!-- Balance check form -->
+                <form asp-action="ViewBalance" method="post">
+                    <div class="mb-3">
+                        <label asp-for="Username" class="form-label">
+                            <i class="fas fa-user"></i> @Html.DisplayNameFor(m => m.Username)
+                        </label>
+                        <input asp-for="Username" class="form-control form-control-lg"
+                               placeholder="Enter username (e.g., SCoppey)" autocomplete="off" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid gap-2 mb-3">
+                        <button type="submit" class="btn btn-heso-primary btn-lg">
+                            <i class="fas fa-search"></i> Check Balance
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Balance result display -->
+                @if (Model.Balance > 0)
+                {
+                    <div class="mt-4">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h6 class="card-title">Balance Information</h6>
+                                <p class="card-text">
+                                    <strong>Balance:</strong> @Model.Balance.ToString("F2") CHF<br>
+                                    <strong>Pages:</strong> @((int)(Model.Balance / 0.08)) pages
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <!-- Navigation links -->
+                <div class="text-center mt-4">
+                    <a href="@Url.Action("Index")" class="text-heso-blue me-3">
+                        <i class="fas fa-arrow-left"></i> Back to Login
+                    </a>
+                    <a href="@Url.Action("Index", "Home")" class="text-heso-blue">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
