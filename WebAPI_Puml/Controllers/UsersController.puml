@@ -1,0 +1,9 @@
+@startuml
+class UsersController {
+    + UsersController(userRepository:IUserRepository)
+    + <<async>> GetAllUsers() : Task<ActionResult>
+    - {static} GetFullName(username:string) : string
+}
+ControllerBase <|-- UsersController
+UsersController --> "_userRepository" IUserRepository
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+!include .\\Program.puml
+!include .\\Controllers\FacultiesController.puml
+!include .\\Controllers\HomeController.puml
+!include .\\Controllers\PoSController.puml
+!include .\\Models\ErrorViewModel.puml
+!include .\\Models\LoginViewModel.puml
+!include .\\Models\QuotaViewModel.puml
+!include .\\Services\ApiService.puml
+!include .\\obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.puml
+!include .\\obj\Debug\net8.0\MVC.AssemblyInfo.puml
+!include .\\obj\Debug\net8.0\MVC.GlobalUsings.g.puml
+!include .\\obj\Debug\net8.0\MVC.RazorAssemblyInfo.puml
+@enduml

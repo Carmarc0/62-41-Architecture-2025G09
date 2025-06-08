@@ -1,0 +1,10 @@
+@startuml
+interface IQuotaService {
+    AddAmount(chfAmount:float, username:string) : Task<bool>
+    GetAvailableAmount(username:string) : Task<double>
+    TransferMoneyToPrintSystem(username:string, chfAmount:double) : Task<bool>
+    AddSemesterQuota(username:string, chfAmount:double) : Task<bool>
+    GetUsername(uid:string) : Task<string>
+    GetAllBalancesAsync() : Task<List<UserBalanceResponse>>
+}
+@enduml

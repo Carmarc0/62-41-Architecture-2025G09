@@ -1,0 +1,19 @@
+@startuml
+class ActiveDirectory <<static>> {
+    + {static} Auth(username:string, password:string) : bool
+    + {static} GetUserRole(username:string) : string
+    + {static} IsAdmin(username:string) : bool
+    + {static} IsStudent(username:string) : bool
+    + {static} UserExists(username:string) : bool
+    + {static} GetAllUsernames() : IEnumerable<string>
+    + {static} GetUserInfo(username:string) : UserInfo?
+}
+class UserInfo {
+    + Password : string <<get>> <<set>>
+    + Role : string <<get>> <<set>>
+    + UserInfo(password:string, role:string)
+}
+class "Dictionary`2"<T1,T2> {
+}
+ActiveDirectory o-> "ValidUsers<string,UserInfo>" "Dictionary`2"
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+class QuotaService {
+    + QuotaService(userRepository:IUserRepository)
+    + <<async>> AddAmount(chfAmount:float, username:string) : Task<bool>
+    + <<async>> GetAvailableAmount(username:string) : Task<double>
+    + <<async>> GetAllBalancesAsync() : Task<List<UserBalanceResponse>>
+    + <<async>> TransferMoneyToPrintSystem(username:string, chfAmount:double) : Task<bool>
+    + <<async>> AddSemesterQuota(username:string, chfAmount:double) : Task<bool>
+    + <<async>> GetUsername(uid:string) : Task<string>
+}
+IQuotaService <|-- QuotaService
+QuotaService --> "_userRepository" IUserRepository
+@enduml

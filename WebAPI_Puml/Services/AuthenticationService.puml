@@ -1,0 +1,10 @@
+@startuml
+class AuthenticationService {
+    + AuthenticationService(userRepository:IUserRepository)
+    + <<async>> Authenticate(username:string, password:string) : Task<bool>
+    + AuthenticateAdmin(username:string, password:string) : Task<bool>
+    + AuthenticateStudent(username:string, password:string) : Task<bool>
+}
+IAuthenticationService <|-- AuthenticationService
+AuthenticationService --> "_userRepository" IUserRepository
+@enduml

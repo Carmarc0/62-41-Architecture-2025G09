@@ -1,0 +1,7 @@
+@startuml
+class LoginViewModel {
+    + Username : string <<get>> <<set>>
+    + Password : string <<get>> <<set>>
+    + ErrorMessage : string? <<get>> <<set>>
+}
+@enduml

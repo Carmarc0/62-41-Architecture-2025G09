@@ -1,0 +1,26 @@
+@startuml
+class QuotaController {
+    + QuotaController(quotaService:IQuotaService)
+    + <<async>> AddAmount(request:AddAmountRequest) : Task<ActionResult<bool>>
+    + <<async>> GetAvailableAmount(username:string) : Task<ActionResult<double>>
+    + <<async>> GetAllBalances() : Task<ActionResult>
+    + <<async>> AddSemesterQuota(request:AddSemesterQuotaRequest) : Task<ActionResult<bool>>
+    + <<async>> GetUsername(uid:string) : Task<ActionResult<string>>
+}
+class AddAmountRequest {
+    + ChfAmount : float <<get>> <<set>>
+    + Username : string <<get>> <<set>>
+}
+class AddSemesterQuotaRequest {
+    + ChfAmount : double <<get>> <<set>>
+    + Username : string <<get>> <<set>>
+}
+class UserBalanceResponse {
+    + Username : string <<get>> <<set>>
+    + BalanceChf : double <<get>> <<set>>
+    + Pages : int <<get>> <<set>>
+}
+ControllerBase <|-- QuotaController
+QuotaController --> "_quotaService" IQuotaService
+UserBalanceResponse --> "LastUpdated" DateTime
+@enduml

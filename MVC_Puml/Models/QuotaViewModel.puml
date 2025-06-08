@@ -1,0 +1,27 @@
+@startuml
+class AddQuotaViewModel {
+    + Username : string <<get>> <<set>>
+    + Amount : int <<get>> <<set>>
+    + SuccessMessage : string? <<get>> <<set>>
+    + ErrorMessage : string? <<get>> <<set>>
+}
+class AddCreditViewModel {
+    + Username : string <<get>> <<set>>
+    + Amount : int <<get>> <<set>>
+    + CurrentBalance : double <<get>> <<set>>
+    + SuccessMessage : string? <<get>> <<set>>
+    + ErrorMessage : string? <<get>> <<set>>
+}
+class ViewBalanceViewModel {
+    + Username : string <<get>> <<set>>
+    + Balance : double <<get>> <<set>>
+    + SuccessMessage : string? <<get>> <<set>>
+    + ErrorMessage : string? <<get>> <<set>>
+}
+class UserBalanceInfo {
+    + Username : string <<get>> <<set>>
+    + BalanceChf : double <<get>> <<set>>
+    + Pages : int <<get>> <<set>>
+}
+UserBalanceInfo --> "LastUpdated" DateTime
+@enduml

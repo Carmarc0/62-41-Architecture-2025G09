@@ -1,0 +1,7 @@
+@startuml
+class CurrencyConverter <<static>> {
+    - {static} <<readonly>> CHF_PER_PAGE : double = 0.08
+    + {static} ConvertCHFToPages(chfAmount:double) : float
+    + {static} ConvertPagesToCHF(pages:float) : double
+}
+@enduml

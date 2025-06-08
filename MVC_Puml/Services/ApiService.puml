@@ -1,0 +1,33 @@
+@startuml
+interface IApiService {
+    AuthenticateAsync(username:string, password:string) : Task<bool>
+    AuthenticateAdminAsync(username:string, password:string) : Task<bool>
+    AuthenticateStudentAsync(username:string, password:string) : Task<bool>
+    GetBalanceAsync(username:string) : Task<double>
+    AddAmountAsync(username:string, amount:double) : Task<bool>
+    AddSemesterQuotaAsync(username:string, amount:double) : Task<bool>
+    CheckUserExistsAsync(username:string) : Task<bool>
+    GetAllUsersAsync() : Task<List<UserInfo>>
+}
+class ApiService {
+    - <<readonly>> _baseUrl : string
+    + ApiService(httpClient:HttpClient, configuration:IConfiguration)
+    + <<async>> AuthenticateAsync(username:string, password:string) : Task<bool>
+    + <<async>> AuthenticateAdminAsync(username:string, password:string) : Task<bool>
+    + <<async>> AuthenticateStudentAsync(username:string, password:string) : Task<bool>
+    + <<async>> GetBalanceAsync(username:string) : Task<double>
+    + <<async>> AddAmountAsync(username:string, amount:double) : Task<bool>
+    + <<async>> AddSemesterQuotaAsync(username:string, amount:double) : Task<bool>
+    + <<async>> CheckUserExistsAsync(username:string) : Task<bool>
+    + <<async>> GetAllUsersAsync() : Task<List<UserInfo>>
+}
+class UserInfo {
+    + Username : string <<get>> <<set>>
+    + FullName : string <<get>> <<set>>
+    + Role : string <<get>> <<set>>
+    + HasQuota : bool <<get>> <<set>>
+    + Balance : double <<get>> <<set>>
+}
+IApiService <|-- ApiService
+ApiService --> "_httpClient" HttpClient
+@enduml

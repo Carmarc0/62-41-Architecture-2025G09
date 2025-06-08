@@ -1,0 +1,11 @@
+@startuml
+class PrintSystemContext {
+    + PrintSystemContext(options:DbContextOptions<PrintSystemContext>)
+    # <<override>> OnModelCreating(modelBuilder:ModelBuilder) : void
+}
+class "DbSet`1"<T> {
+}
+DbContext <|-- PrintSystemContext
+PrintSystemContext --> "Users<User>" "DbSet`1"
+PrintSystemContext --> "UserQuotas<UserQuota>" "DbSet`1"
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+class AuthenticationController {
+    + AuthenticationController(authenticationService:IAuthenticationService)
+    + <<async>> Authenticate(request:LoginRequest) : Task<ActionResult>
+    + <<async>> AuthenticateAdmin(request:LoginRequest) : Task<ActionResult>
+    + <<async>> AuthenticateStudent(request:LoginRequest) : Task<ActionResult>
+    + <<async>> CheckUserExists(username:string) : Task<ActionResult>
+}
+class LoginRequest {
+    + Username : string <<get>> <<set>>
+    + Password : string <<get>> <<set>>
+}
+ControllerBase <|-- AuthenticationController
+AuthenticationController --> "_authenticationService" IAuthenticationService
+@enduml

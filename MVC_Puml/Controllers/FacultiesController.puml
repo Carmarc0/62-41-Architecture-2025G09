@@ -1,0 +1,13 @@
+@startuml
+class FacultiesController {
+    + FacultiesController(apiService:IApiService)
+    + Index() : IActionResult
+    + <<async>> Login(model:LoginViewModel) : Task<IActionResult>
+    + <<async>> AddQuota() : Task<IActionResult>
+    + <<async>> AddQuota(model:AddQuotaViewModel) : Task<IActionResult>
+    + <<async>> RefreshUsers() : Task<IActionResult>
+    + Logout() : IActionResult
+}
+Controller <|-- FacultiesController
+FacultiesController --> "_apiService" IApiService
+@enduml

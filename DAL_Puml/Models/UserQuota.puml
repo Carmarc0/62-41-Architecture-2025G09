@@ -1,0 +1,11 @@
+@startuml
+class UserQuota {
+    + Id : int <<get>> <<set>>
+    + Username : string <<get>> <<set>>
+    + TotalPages : float <<get>> <<set>>
+    + AddPages(pages:float) : void
+    + GetBalanceInCHF() : double
+    + GetPages() : float
+}
+UserQuota --> "LastUpdated" DateTime
+@enduml

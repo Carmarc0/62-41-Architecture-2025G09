@@ -1,0 +1,4 @@
+@startuml
+class "AddHttpClient`2"<T1,T2> {
+}
+@enduml

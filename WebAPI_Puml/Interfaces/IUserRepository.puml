@@ -1,0 +1,10 @@
+@startuml
+interface IUserRepository {
+    GetUsername(uid:string) : Task<string>
+    AddAmount(chfAmount:float, username:string) : Task
+    AddPages(pages:float, username:string) : Task
+    GetUserQuota(username:string) : Task<UserQuota>
+    UpdateUserQuota(quota:UserQuota) : Task
+    GetAllUserBalances() : Task<List<UserQuota>>
+}
+@enduml

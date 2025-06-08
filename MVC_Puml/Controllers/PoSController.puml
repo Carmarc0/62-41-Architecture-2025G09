@@ -1,0 +1,13 @@
+@startuml
+class PoSController {
+    + PoSController(apiService:IApiService)
+    + Index() : IActionResult
+    + <<async>> Login(model:LoginViewModel) : Task<IActionResult>
+    + <<async>> Dashboard() : Task<IActionResult>
+    + <<async>> AddCredit(model:AddCreditViewModel) : Task<IActionResult>
+    + <<async>> RefreshBalance() : Task<IActionResult>
+    + Logout() : IActionResult
+}
+Controller <|-- PoSController
+PoSController --> "_apiService" IApiService
+@enduml

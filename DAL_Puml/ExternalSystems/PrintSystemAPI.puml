@@ -1,0 +1,6 @@
+@startuml
+class PrintSystemAPI <<static>> {
+    + {static} AddPages(pages:float, username:string) : bool
+    + {static} GetAvailableAmount(username:string) : float
+}
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+!include .\\Program.puml
+!include .\\Controllers\AuthenticationController.puml
+!include .\\Controllers\QuotaController.puml
+!include .\\Controllers\UsersController.puml
+!include .\\Interfaces\IAuthenticationService.puml
+!include .\\Interfaces\IQuotaService.puml
+!include .\\Interfaces\IUserRepository.puml
+!include .\\Repositories\UserRepository.puml
+!include .\\Services\AuthenticationService.puml
+!include .\\Services\QuotaService.puml
+!include .\\obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.puml
+!include .\\obj\Debug\net8.0\WebAPI.AssemblyInfo.puml
+!include .\\obj\Debug\net8.0\WebAPI.GlobalUsings.g.puml
+@enduml

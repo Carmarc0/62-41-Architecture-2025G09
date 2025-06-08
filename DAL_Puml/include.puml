@@ -1,0 +1,11 @@
+@startuml
+!include .\\PrintSystemContext.puml
+!include .\\ExternalSystems\ActiveDirectory.puml
+!include .\\ExternalSystems\PrintSystemAPI.puml
+!include .\\Models\User.puml
+!include .\\Models\UserQuota.puml
+!include .\\Utilities\CurrencyConverter.puml
+!include .\\obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.puml
+!include .\\obj\Debug\net8.0\DAL.AssemblyInfo.puml
+!include .\\obj\Debug\net8.0\DAL.GlobalUsings.g.puml
+@enduml

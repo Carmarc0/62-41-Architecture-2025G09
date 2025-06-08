@@ -1,0 +1,10 @@
+@startuml
+class User {
+    + Id : int <<get>> <<set>>
+    + Username : string <<get>> <<set>>
+    + Uid : string <<get>> <<set>>
+    + FirstName : string <<get>> <<set>>
+    + LastName : string <<get>> <<set>>
+}
+User --> "UserQuota" UserQuota
+@enduml

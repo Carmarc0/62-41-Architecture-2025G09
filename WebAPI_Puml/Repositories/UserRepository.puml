@@ -1,0 +1,13 @@
+@startuml
+class UserRepository {
+    + UserRepository(context:PrintSystemContext)
+    + <<async>> GetUsername(uid:string) : Task<string>
+    + <<async>> AddAmount(chfAmount:float, username:string) : Task
+    + <<async>> AddPages(pages:float, username:string) : Task
+    + <<async>> GetUserQuota(username:string) : Task<UserQuota>
+    + <<async>> UpdateUserQuota(quota:UserQuota) : Task
+    + <<async>> GetAllUserBalances() : Task<List<UserQuota>>
+}
+IUserRepository <|-- UserRepository
+UserRepository --> "_context" PrintSystemContext
+@enduml

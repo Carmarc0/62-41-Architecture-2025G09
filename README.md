@@ -7,23 +7,12 @@
 
 Integrated payment system for university printers, enabling print quota management through distinct web interfaces for students and administration.
 
-## Architecture
-
-```
-MVC Web App (Interface) → WebAPI (Business Logic) → Azure SQL Database
-```
-
-### Projects
-- **DAL**: Data Access Layer with Entity Framework
-- **WebAPI**: REST API for business logic
-- **MVC**: Web interface (Faculties + Point of Sale)
-- **TestApp**: Testing application
-
 ## Azure Deployment
 
 ### Deployed Services
-- **WebAPI**: `https://printsystem-webapi-2025g9-xxx.azurewebsites.net`
-- **MVC**: `https://printsystem-mvc-2025g9-xxx.azurewebsites.net`
+
+- [Application deployed](https://printsystem-mvc-2025g9-h0g9fabyevfgawcp.canadacentral-01.azurewebsites.net/) - Access the online application
+- [API Documentation (Swagger)](https://printsystem-webapi-2025g9-crbqfmgfeeceafhk.canadacentral-01.azurewebsites.net/swagger/index.html) - See the API documentation
 - **Database**: Azure SQL Database
 
 ## Test Accounts
